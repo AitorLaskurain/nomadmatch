@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomadMatch — Encuentra tu ciudad europea ideal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">🗺️ NomadMatch</div>
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="setLang('es')">ES</button>
+                <span>|</span>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Encuentra tu ciudad europea ideal</h1>
+        <p class="subtitle">Para nómadas digitales como tú</p>
+        <div class="stats-bar">
+            <span>🏙️ 50+ ciudades</span>
+            <span>🌍 15 países</span>
+            <span>📊 100% data real</span>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- LEFT: Preferences Panel -->
+        <section class="preferences-panel">
+            <h2>🎯 Tus preferencias</h2>
+            
+            <div class="pref-group">
+                <label for="budget">💰 Presupuesto</label>
+                <select id="budget">
+                    <option value="">Cualquiera</option>
+                    <option value="Very Affordable">Muy económico (&lt;€900/mes)</option>
+                    <option value="Affordable" selected>Económico (€900-€1300)</option>
+                    <option value="Moderate">Moderado (€1300-€1700)</option>
+                    <option value="Expensive">Caro (€1700-€2200)</option>
+                    <option value="Very Expensive">Muy caro (€2200+)</option>
+                </select>
+            </div>
+
+            <div class="pref-group">
+                <label for="climate">☀️ Clima</label>
+                <select id="climate">
+                    <option value="">Cualquiera</option>
+                    <option value="Warm" selected>Cálido (veranos 25°C+)</option>
+                    <option value="Mild">Templado (veranos 18-25°C)</option>
+                    <option value="Hot">Caluroso (veranos 28°C+)</option>
+                    <option value="Cool">Fresco (veranos &lt;20°C)</option>
+                </select>
+            </div>
+
+            <div class="pref-group">
+                <label for="internet">🌐 Internet</label>
+                <select id="internet">
+                    <option value="">Cualquiera</option>
+                    <option value="Excellent" selected>Excelente (200+ Mbps)</option>
+                    <option value="Good">Bueno (80-200 Mbps)</option>
+                    <option value="Average">Normal (50-80 Mbps)</option>
+                </select>
+            </div>
+
+            <div class="pref-group">
+                <label for="visa">🛂 Visa nómada digital</label>
+                <select id="visa">
+                    <option value="">No importa</option>
+                    <option value="Yes">Sí, necesito visa</option>
+                    <option value="No">No necesito</option>
+                </select>
+            </div>
+
+            <div class="pref-group">
+                <label for="vibe">✨ Ambiente</label>
+                <select id="vibe">
+                    <option value="">Cualquiera</option>
+                    <option value="Beach">🏖️ Playa</option>
+                    <option value="Tech">💻 Tech / Startups</option>
+                    <option value="Nightlife">🎉 Vida nocturna</option>
+                    <option value="Historic">🏛️ Histórico / Cultural</option>
+                    <option value="Nature">🌿 Naturaleza</option>
+                    <option value="Affordable">💰 Económico</option>
+                    <option value="Creative">🎨 Creativo / Artístico</option>
+                </select>
+            </div>
+
+            <button class="cta-button" onclick="findMatches()">
+                🔍 Encontrar mis 3 ciudades
+            </button>
+
+            <div class="tier-toggle">
+                <button class="tier-btn active" id="tier-free" onclick="setTier('free')">🆓 Free</button>
+                <button class="tier-btn" id="tier-premium" onclick="setTier('premium')">⭐ Premium</button>
+            </div>
+            <p class="tier-hint" id="tier-hint">Activa Premium para ver guías de visa y fiscalidad</p>
+        </section>
+
+        <!-- RIGHT: Results Panel -->
+        <section class="results-panel">
+            <div id="results-placeholder" class="placeholder">
+                <div class="placeholder-icon">🏙️</div>
+                <p>Selecciona tus preferencias y pulsa<br><strong>"Encontrar mis 3 ciudades"</strong></p>
+            </div>
+            
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Buscando tu match perfecto...</p>
+            </div>
+
+            <div id="results-container" class="results-container hidden"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>NomadMatch v1.0 — TFM Máster IA Business & Innovation — Nuclio Digital School</p>
+        <p>Datos: WHO, World Bank, Numbeo, EF EPI, Ookla, fuentes gubernamentales</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
