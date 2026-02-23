@@ -2,10 +2,19 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-RUN npm install -g live-server
+# Copiar package files
+COPY package.json ./
 
-COPY public/ /app/public/
+# Instalar dependencias
+RUN npm install --no-package-lock
+
+# Crear directorio public si no existe
+RUN mkdir -p public
+
+# Copiar archivos de la aplicación
+COPY public/ ./public/
 
 EXPOSE 3000
 
-CMD ["live-server", "public", "--port=3000", "--host=0.0.0.0", "--no-browser"]
+# Comando para servir archivos estáticos
+CMD ["npx", "live-server", "public", "--port=3000", "--host=0.0.0.0", "--no-browser", "--watch=public", "--entry-file=index.html"]

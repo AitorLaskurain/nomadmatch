@@ -1,27 +1,56 @@
-# Environment variables (NEVER push API keys)
-.env
-
 # Python
 __pycache__/
-*.pyc
-*.pyo
-.venv/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv
 venv/
+env/
+ENV/
+.idea/
+.vscode/
 
-# Node
-node_modules/
+# Backend
+backend/__pycache__/
+backend/.env
+backend/.env.local
+backend/.env.*.local
+backend/chroma_data/
+backend/app/__pycache__/
 
-# ChromaDB persistent data
+# Frontend
+frontend/node_modules/
+frontend/package-lock.json
+frontend/.env
+frontend/.env.local
+frontend/dist/
+frontend/build/
+
+# Data - NO SUBIR DATOS CRUDOS (solo muestras)
+data/*.xlsx
+data/*.pdf
+data/*.db
+!data/sample_cities.csv
+!data/README.md
+
+# ChromaDB - Base de datos vectorial (NO SUBIR)
 chroma_data/
+backend/chroma_data/
+langflow_data/
+
+# Docker
+*.pid
+*.pid.lock
+docker-compose.override.yml
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS
 .DS_Store
 Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Temp
-*.tmp
-generate_csv.py
