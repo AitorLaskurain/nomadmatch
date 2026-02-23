@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./data:/app/data
+      - chroma_data:/app/chroma_data
+    env_file:
+      - ./backend/.env
+    networks:
+      - nomadmatch-network
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - nomadmatch-network
+    restart: unless-stopped
+
+networks:
+  nomadmatch-network:
+    driver: bridge
+
+volumes:
+  chroma_data:
